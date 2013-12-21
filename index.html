@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Items test</title>
+
+    <script type="text/javascript" src="js/vendor/jquery-1.10.2.min.js"></script>
+
+    <script type="text/javascript" src="js/ItemSheets.js"></script>
+    <script type="text/javascript" src="js/TextureManager.js"></script>
+    <script type="text/javascript" src="js/ItemIcon.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            TextureManager.init(TextureManagerImages, function () {
+                var $div = $('#items');
+                var nbIconsLeft = 2000;
+                for (var sheet in ItemSheets) {
+                    if (ItemSheets.hasOwnProperty(sheet)) {
+                        var icon = ItemIcon.createIcon({sheetid: sheet});
+                        $div.append(icon);
+                        if ((--nbIconsLeft) < 0) {
+                            break;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Some icons...</h1>
+
+<div id="items"></div>
+
+</body>
+</html>
